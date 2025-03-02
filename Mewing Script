@@ -166,7 +166,7 @@ local isGigaSigmaActive = false
 local isEdgarActive = false
 
 local EdgarToggle = MainTab:CreateToggle({
-   Name = "Go to Edgar & Infinite Click",
+   Name = "Autofarm Edgar",
    CurrentValue = false,
    Flag = "EdgarToggle", 
    Callback = function(state)
