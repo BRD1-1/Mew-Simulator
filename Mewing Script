@@ -159,14 +159,14 @@ local SkinCareToggle = MainTab:CreateToggle({
 
 local MainSection = MainTab:CreateSection("Auto Bosses")
 
+local isEdgarActive = false
 local isDJBestActive = false
 local isTopGuyActive = false
 local isMoaiActive = false
 local isGigaSigmaActive = false
-local isEdgarActive = false
 
 local EdgarToggle = MainTab:CreateToggle({
-   Name = "Autofarm Edgar",
+   Name = "Go to Edgar & Infinite Click",
    CurrentValue = false,
    Flag = "EdgarToggle", 
    Callback = function(state)
@@ -186,17 +186,12 @@ local EdgarToggle = MainTab:CreateToggle({
             end
          end)
 
-         task.spawn(function()
-            while isEdgarActive do
-               task.wait(5)
-               if isEdgarActive then
-                  local args = {
-                     [1] = "Edgar",
-                     [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
-                     [3] = "1"
-                  }
-                  game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
-               end
+         task.delay(8, function()
+            if isEdgarActive then
+               isEdgarActive = false
+               EdgarToggle:SetValue(false)
+               task.wait(1)
+               EdgarToggle:SetValue(true)
             end
          end)
       else
@@ -206,7 +201,7 @@ local EdgarToggle = MainTab:CreateToggle({
 })
 
 local DJBestToggle = MainTab:CreateToggle({
-   Name = "Autofarm DJ Best",
+   Name = "Go to DJ Best & Infinite Click",
    CurrentValue = false,
    Flag = "DJBestToggle", 
    Callback = function(state)
@@ -225,6 +220,15 @@ local DJBestToggle = MainTab:CreateToggle({
                task.wait(0.1)
             end
          end)
+
+         task.delay(8, function()
+            if isDJBestActive then
+               isDJBestActive = false
+               DJBestToggle:SetValue(false)
+               task.wait(1)
+               DJBestToggle:SetValue(true)
+            end
+         end)
       else
          isDJBestActive = false
       end
@@ -232,7 +236,7 @@ local DJBestToggle = MainTab:CreateToggle({
 })
 
 local TopGuyToggle = MainTab:CreateToggle({
-   Name = "Autofarm Top Guy",
+   Name = "Go to Top Guy & Infinite Click",
    CurrentValue = false,
    Flag = "TopGuyToggle", 
    Callback = function(state)
@@ -251,6 +255,15 @@ local TopGuyToggle = MainTab:CreateToggle({
                task.wait(0.1)
             end
          end)
+
+         task.delay(8, function()
+            if isTopGuyActive then
+               isTopGuyActive = false
+               TopGuyToggle:SetValue(false)
+               task.wait(1)
+               TopGuyToggle:SetValue(true)
+            end
+         end)
       else
          isTopGuyActive = false
       end
@@ -258,7 +271,7 @@ local TopGuyToggle = MainTab:CreateToggle({
 })
 
 local MoaiToggle = MainTab:CreateToggle({
-   Name = "Autofarm Moai",
+   Name = "Go to Moai & Infinite Click",
    CurrentValue = false,
    Flag = "MoaiToggle", 
    Callback = function(state)
@@ -277,6 +290,15 @@ local MoaiToggle = MainTab:CreateToggle({
                task.wait(0.1)
             end
          end)
+
+         task.delay(8, function()
+            if isMoaiActive then
+               isMoaiActive = false
+               MoaiToggle:SetValue(false)
+               task.wait(1)
+               MoaiToggle:SetValue(true)
+            end
+         end)
       else
          isMoaiActive = false
       end
@@ -284,7 +306,7 @@ local MoaiToggle = MainTab:CreateToggle({
 })
 
 local GigaSigmaToggle = MainTab:CreateToggle({
-   Name = "Autofarm Giga Sigma",
+   Name = "Go to Giga Sigma & Infinite Click",
    CurrentValue = false,
    Flag = "GigaSigmaToggle", 
    Callback = function(state)
@@ -303,8 +325,18 @@ local GigaSigmaToggle = MainTab:CreateToggle({
                task.wait(0.1)
             end
          end)
+
+         task.delay(8, function()
+            if isGigaSigmaActive then
+               isGigaSigmaActive = false
+               GigaSigmaToggle:SetValue(false)
+               task.wait(1)
+               GigaSigmaToggle:SetValue(true)
+            end
+         end)
       else
          isGigaSigmaActive = false
       end
    end,
 })
+
