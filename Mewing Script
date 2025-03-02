@@ -39,6 +39,8 @@ local MainSection = MainTab:CreateSection("Auto Farm")
 
 local isMewActive = false
 local isRollerActive = false
+local isFoodActive = false
+local isToothbrushActive = false
 
 local MewToggle = MainTab:CreateToggle({
    Name = "Infinite Mew",
@@ -81,12 +83,8 @@ local RollerToggle = MainTab:CreateToggle({
    end,
 })
 
-
-local isFoodActive = false
-local isToothbrushActive = false
-
 local FoodToggle = MainTab:CreateToggle({
-   Name = "Auto Food",
+   Name = "Equip & Infinite Food",
    CurrentValue = false,
    Flag = "FoodToggle", 
    Callback = function(state)
@@ -110,7 +108,7 @@ local FoodToggle = MainTab:CreateToggle({
 })
 
 local ToothbrushToggle = MainTab:CreateToggle({
-   Name = "Auto Toothbrush",
+   Name = "Equip & Infinite Toothbrush",
    CurrentValue = false,
    Flag = "ToothbrushToggle", 
    Callback = function(state)
