@@ -190,8 +190,11 @@ local EdgarToggle = MainTab:CreateToggle({
                EdgarToggle:SetValue(true)
             end
          end)
+      else
+         isEdgarActive = false
       end
    end,
 })
+
 
 
