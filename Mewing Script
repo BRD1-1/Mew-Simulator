@@ -44,7 +44,7 @@ local isToothbrushActive = false
 local isSkinCareActive = false
 
 local MewToggle = MainTab:CreateToggle({
-   Name = "Infinite Mew",
+   Name = "Autofarm Mew",
    CurrentValue = false,
    Flag = "MewToggle", 
    Callback = function(state)
@@ -61,7 +61,7 @@ local MewToggle = MainTab:CreateToggle({
 })
 
 local RollerToggle = MainTab:CreateToggle({
-   Name = "Equip & Infinite Roller",
+   Name = "Autofarm Roller",
    CurrentValue = false,
    Flag = "RollerToggle", 
    Callback = function(state)
@@ -86,7 +86,7 @@ local RollerToggle = MainTab:CreateToggle({
 
 
 local FoodToggle = MainTab:CreateToggle({
-   Name = "Equip & Infinite Food",
+   Name = "Autofarm Food",
    CurrentValue = false,
    Flag = "FoodToggle", 
    Callback = function(state)
@@ -110,7 +110,7 @@ local FoodToggle = MainTab:CreateToggle({
 })
 
 local ToothbrushToggle = MainTab:CreateToggle({
-   Name = "Equip & Infinite Toothbrush",
+   Name = "Autofarm Toothbrush",
    CurrentValue = false,
    Flag = "ToothbrushToggle", 
    Callback = function(state)
@@ -134,7 +134,7 @@ local ToothbrushToggle = MainTab:CreateToggle({
 })
 
 local SkinCareToggle = MainTab:CreateToggle({
-   Name = "Equip & Infinite Skin Care",
+   Name = "Autofarm Skin Care",
    CurrentValue = false,
    Flag = "SkinCareToggle", 
    Callback = function(state)
@@ -165,7 +165,7 @@ local isMoaiActive = false
 local isGigaSigmaActive = false
 
 local DJBestToggle = MainTab:CreateToggle({
-   Name = "Go to DJ Best & Infinite Click",
+   Name = "Autofarm DJ Best",
    CurrentValue = false,
    Flag = "DJBestToggle", 
    Callback = function(state)
@@ -191,7 +191,7 @@ local DJBestToggle = MainTab:CreateToggle({
 })
 
 local TopGuyToggle = MainTab:CreateToggle({
-   Name = "Go to Top Guy & Infinite Click",
+   Name = "Autofarm Top Guy",
    CurrentValue = false,
    Flag = "TopGuyToggle", 
    Callback = function(state)
@@ -217,7 +217,7 @@ local TopGuyToggle = MainTab:CreateToggle({
 })
 
 local MoaiToggle = MainTab:CreateToggle({
-   Name = "Go to Moai & Infinite Click",
+   Name = "Autofarm Moai",
    CurrentValue = false,
    Flag = "MoaiToggle", 
    Callback = function(state)
@@ -243,7 +243,7 @@ local MoaiToggle = MainTab:CreateToggle({
 })
 
 local GigaSigmaToggle = MainTab:CreateToggle({
-   Name = "Go to Giga Sigma & Infinite Click",
+   Name = "Autofarm Giga Sigma",
    CurrentValue = false,
    Flag = "GigaSigmaToggle", 
    Callback = function(state)
