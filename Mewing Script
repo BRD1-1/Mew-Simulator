@@ -159,44 +159,111 @@ local SkinCareToggle = MainTab:CreateToggle({
 
 local MainSection = MainTab:CreateSection("Auto Bosses")
 
-local isEdgarActive = false
+local isDJBestActive = false
+local isTopGuyActive = false
+local isMoaiActive = false
+local isGigaSigmaActive = false
 
-local EdgarToggle = MainTab:CreateToggle({
-   Name = "Go to Edgar & Infinite Click",
+local DJBestToggle = MainTab:CreateToggle({
+   Name = "Go to DJ Best & Infinite Click",
    CurrentValue = false,
-   Flag = "EdgarToggle", 
+   Flag = "DJBestToggle", 
    Callback = function(state)
-      isEdgarActive = state
-      if isEdgarActive then
+      isDJBestActive = state
+      if isDJBestActive then
          local args = {
-            [1] = "Edgar",
-            [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
+            [1] = "DJBest",
+            [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.DJBest.Table,
             [3] = "1"
          }
          game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
 
          task.spawn(function()
-            while isEdgarActive do
+            while isDJBestActive do
                game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onClickRequest:FireServer()
                task.wait(0.1)
             end
          end)
+      else
+         isDJBestActive = false
+      end
+   end,
+})
+
+local TopGuyToggle = MainTab:CreateToggle({
+   Name = "Go to Top Guy & Infinite Click",
+   CurrentValue = false,
+   Flag = "TopGuyToggle", 
+   Callback = function(state)
+      isTopGuyActive = state
+      if isTopGuyActive then
+         local args = {
+            [1] = "TopGuy",
+            [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.TopGuy.Table,
+            [3] = "1"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
 
          task.spawn(function()
-            while isEdgarActive do
-               task.wait(5)
-               if isEdgarActive then
-                  local args = {
-                     [1] = "Edgar",
-                     [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
-                     [3] = "1"
-                  }
-                  game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
-               end
+            while isTopGuyActive do
+               game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onClickRequest:FireServer()
+               task.wait(0.1)
             end
          end)
       else
-         isEdgarActive = false
+         isTopGuyActive = false
+      end
+   end,
+})
+
+local MoaiToggle = MainTab:CreateToggle({
+   Name = "Go to Moai & Infinite Click",
+   CurrentValue = false,
+   Flag = "MoaiToggle", 
+   Callback = function(state)
+      isMoaiActive = state
+      if isMoaiActive then
+         local args = {
+            [1] = "Moai",
+            [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Moai.Table,
+            [3] = "1"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
+
+         task.spawn(function()
+            while isMoaiActive do
+               game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onClickRequest:FireServer()
+               task.wait(0.1)
+            end
+         end)
+      else
+         isMoaiActive = false
+      end
+   end,
+})
+
+local GigaSigmaToggle = MainTab:CreateToggle({
+   Name = "Go to Giga Sigma & Infinite Click",
+   CurrentValue = false,
+   Flag = "GigaSigmaToggle", 
+   Callback = function(state)
+      isGigaSigmaActive = state
+      if isGigaSigmaActive then
+         local args = {
+            [1] = "GigaSigma",
+            [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.GigaSigma.Table,
+            [3] = "1"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
+
+         task.spawn(function()
+            while isGigaSigmaActive do
+               game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onClickRequest:FireServer()
+               task.wait(0.1)
+            end
+         end)
+      else
+         isGigaSigmaActive = false
       end
    end,
 })
