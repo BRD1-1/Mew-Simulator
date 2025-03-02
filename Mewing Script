@@ -37,33 +37,3 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("Auto Farm", nil)
 local Section = MainTab:CreateSection("Auto Farm")
 
-local ToggleMew = MainTab:CreateToggle({
-   Name = "Use Mew",
-   CurrentValue = false,
-   Flag = "MewToggle", 
-   Callback = function(activateMew)
-      if activateMew then
-         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.MewRequest:FireServer()
-      end
-   end,
-})
-
-local ToggleRoller = MainTab:CreateToggle({
-   Name = "Equip and Use Roller",
-   CurrentValue = false,
-   Flag = "RollerToggle", 
-   Callback = function(activateRoller)
-      if activateRoller then
-         local args = {
-            [1] = 1,
-            [2] = "Roller",
-            [3] = "Pro Roller"
-         }
-         
-         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onGuiEquipRequest:FireServer(unpack(args))
-         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
-      end
-   end,
-})
-
-
