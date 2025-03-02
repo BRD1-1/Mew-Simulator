@@ -156,3 +156,5 @@ local SkinCareToggle = MainTab:CreateToggle({
       end
    end,
 })
+
+local MainSection = MainTab:CreateSection("Auto Fight")
