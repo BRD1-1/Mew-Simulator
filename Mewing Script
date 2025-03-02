@@ -76,3 +76,30 @@ local ToggleRoller = MainTab:CreateToggle({
       end
    end,
 })
+
+
+FoodToggle = MainTab:CreateToggle({
+   Name = "Auto Food",
+   CurrentValue = false,
+   Flag = "FoodToggle", 
+   Callback = function(state)
+      isFoodActive = state
+      while isFoodActive do
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
+         task.wait(0.1)
+      end
+   end,
+})
+
+ToothbrushToggle = MainTab:CreateToggle({
+   Name = "Auto Toothbrush",
+   CurrentValue = false,
+   Flag = "ToothbrushToggle", 
+   Callback = function(state)
+      isToothbrushActive = state
+      while isToothbrushActive do
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
+         task.wait(0.1)
+      end
+   end,
+})
