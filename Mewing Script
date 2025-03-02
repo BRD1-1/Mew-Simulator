@@ -47,7 +47,7 @@ local Toggle = MainTab:CreateToggle({
          task.spawn(function()
             while activateMew do
                game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.MewRequest:FireServer()
-               task.wait(0.5) -- Adjust delay as needed
+               task.wait(0.1) -- Adjust delay as needed
             end
          end)
       end
@@ -70,7 +70,7 @@ local ToggleRoller = MainTab:CreateToggle({
          task.spawn(function()
             while activateRoller do
                game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
-               task.wait(0.5) -- Adjust delay as needed
+               task.wait(0.1) -- Adjust delay as needed
             end
          end)
       end
