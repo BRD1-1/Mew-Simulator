@@ -78,28 +78,53 @@ local ToggleRoller = MainTab:CreateToggle({
 })
 
 
-FoodToggle = MainTab:CreateToggle({
+local isFoodActive = false
+local isToothbrushActive = false
+
+local FoodToggle = MainTab:CreateToggle({
    Name = "Auto Food",
    CurrentValue = false,
    Flag = "FoodToggle", 
    Callback = function(state)
       isFoodActive = state
-      while isFoodActive do
-         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
-         task.wait(0.1)
+      if isFoodActive then
+         local args = {
+            [1] = 1,
+            [2] = "Food",
+            [3] = "Golden Burger"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onGuiEquipRequest:FireServer(unpack(args))
+
+         task.spawn(function()
+            while isFoodActive do
+               game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
+               task.wait(0.1)
+            end
+         end)
       end
    end,
 })
 
-ToothbrushToggle = MainTab:CreateToggle({
+local ToothbrushToggle = MainTab:CreateToggle({
    Name = "Auto Toothbrush",
    CurrentValue = false,
    Flag = "ToothbrushToggle", 
    Callback = function(state)
       isToothbrushActive = state
-      while isToothbrushActive do
-         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
-         task.wait(0.1)
+      if isToothbrushActive then
+         local args = {
+            [1] = 1,
+            [2] = "Toothbrush",
+            [3] = "Blue Toothbrush"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onGuiEquipRequest:FireServer(unpack(args))
+
+         task.spawn(function()
+            while isToothbrushActive do
+               game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
+               task.wait(0.1)
+            end
+         end)
       end
    end,
 })
