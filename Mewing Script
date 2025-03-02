@@ -157,32 +157,44 @@ local SkinCareToggle = MainTab:CreateToggle({
    end,
 })
 
-local MainSection = MainTab:CreateSection("Auto Fight")
+local isEdgarActive = false
 
 local EdgarToggle = MainTab:CreateToggle({
    Name = "Go to Edgar & Infinite Click",
    CurrentValue = false,
    Flag = "EdgarToggle", 
    Callback = function(state)
-      if state then
-         while state do
-            local args = {
-               [1] = "Edgar",
-               [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
-               [3] = "1"
-            }
-            game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
+      isEdgarActive = state
+      if isEdgarActive then
+         local args = {
+            [1] = "Edgar",
+            [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
+            [3] = "1"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
 
-            while state do
+         task.spawn(function()
+            while isEdgarActive do
                game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onClickRequest:FireServer()
                task.wait(0.1)
             end
+         end)
 
-            task.wait(8)  -- Wait for 8 seconds before restarting the process
-         end
+         task.delay(8, function()
+            if isEdgarActive then
+               isEdgarActive = false
+               EdgarToggle:SetValue(false)
+
+               task.wait(1)
+               EdgarToggle:SetValue(true)
+            end
+         end)
+      else
+         isEdgarActive = false
       end
    end,
 })
+
 
 
 
