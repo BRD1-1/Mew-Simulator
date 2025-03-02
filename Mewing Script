@@ -182,13 +182,17 @@ local EdgarToggle = MainTab:CreateToggle({
             end
          end)
 
-         task.delay(8, function()
-            if isEdgarActive then
-               isEdgarActive = false
-               EdgarToggle:SetValue(false)
-
-               task.wait(1)
-               EdgarToggle:SetValue(true)
+         task.spawn(function()
+            while isEdgarActive do
+               task.wait(5)
+               if isEdgarActive then
+                  local args = {
+                     [1] = "Edgar",
+                     [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
+                     [3] = "1"
+                  }
+                  game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
+               end
             end
          end)
       else
@@ -196,8 +200,3 @@ local EdgarToggle = MainTab:CreateToggle({
       end
    end,
 })
-
-
-
-
-
