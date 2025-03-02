@@ -37,40 +37,44 @@ local Window = Rayfield:CreateWindow({
 local MainTab = Window:CreateTab("Auto Farm", nil)
 local MainSection = MainTab:CreateSection("Auto Farm")
 
+local isMewActive = false
+local isRollerActive = false
 
-local Toggle = MainTab:CreateToggle({
-   Name = "Auto Mew",
+local MewToggle = MainTab:CreateToggle({
+   Name = "Infinite Mew",
    CurrentValue = false,
    Flag = "MewToggle", 
-   Callback = function(activateMew)
-      if activateMew then
+   Callback = function(state)
+      isMewActive = state
+      if isMewActive then
          task.spawn(function()
-            while activateMew do
+            while isMewActive do
                game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.MewRequest:FireServer()
-               task.wait(0.1) -- Adjust delay as needed
+               task.wait(0.1)
             end
          end)
       end
    end,
 })
 
-local ToggleRoller = MainTab:CreateToggle({
-   Name = "Auto Roller",
+local RollerToggle = MainTab:CreateToggle({
+   Name = "Equip & Infinite Roller",
    CurrentValue = false,
    Flag = "RollerToggle", 
-   Callback = function(activateRoller)
-      if activateRoller then
+   Callback = function(state)
+      isRollerActive = state
+      if isRollerActive then
          local args = {
             [1] = 1,
             [2] = "Roller",
             [3] = "Pro Roller"
          }
          game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onGuiEquipRequest:FireServer(unpack(args))
-         
+
          task.spawn(function()
-            while activateRoller do
+            while isRollerActive do
                game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
-               task.wait(0.1) -- Adjust delay as needed
+               task.wait(0.1)
             end
          end)
       end
