@@ -157,6 +157,8 @@ local SkinCareToggle = MainTab:CreateToggle({
    end,
 })
 
+local MainSection = MainTab:CreateSection("Auto Bosses")
+
 local isEdgarActive = false
 
 local EdgarToggle = MainTab:CreateToggle({
