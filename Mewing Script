@@ -41,6 +41,7 @@ local isMewActive = false
 local isRollerActive = false
 local isFoodActive = false
 local isToothbrushActive = false
+local isSkinCareActive = false
 
 local MewToggle = MainTab:CreateToggle({
    Name = "Infinite Mew",
@@ -124,6 +125,30 @@ local ToothbrushToggle = MainTab:CreateToggle({
 
          task.spawn(function()
             while isToothbrushActive do
+               game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
+               task.wait(0.1)
+            end
+         end)
+      end
+   end,
+})
+
+local SkinCareToggle = MainTab:CreateToggle({
+   Name = "Equip & Infinite Skin Care",
+   CurrentValue = false,
+   Flag = "SkinCareToggle", 
+   Callback = function(state)
+      isSkinCareActive = state
+      if isSkinCareActive then
+         local args = {
+            [1] = 1,
+            [2] = "Skincare",
+            [3] = "Good Sunscreen"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onGuiEquipRequest:FireServer(unpack(args))
+
+         task.spawn(function()
+            while isSkinCareActive do
                game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
                task.wait(0.1)
             end
