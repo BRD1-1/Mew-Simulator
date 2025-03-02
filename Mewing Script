@@ -163,6 +163,47 @@ local isDJBestActive = false
 local isTopGuyActive = false
 local isMoaiActive = false
 local isGigaSigmaActive = false
+local isEdgarActive = false
+
+local EdgarToggle = MainTab:CreateToggle({
+   Name = "Go to Edgar & Infinite Click",
+   CurrentValue = false,
+   Flag = "EdgarToggle", 
+   Callback = function(state)
+      isEdgarActive = state
+      if isEdgarActive then
+         local args = {
+            [1] = "Edgar",
+            [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
+            [3] = "1"
+         }
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
+
+         task.spawn(function()
+            while isEdgarActive do
+               game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onClickRequest:FireServer()
+               task.wait(0.1)
+            end
+         end)
+
+         task.spawn(function()
+            while isEdgarActive do
+               task.wait(5)
+               if isEdgarActive then
+                  local args = {
+                     [1] = "Edgar",
+                     [2] = workspace.Zones:FindFirstChild("1").Interactables.Mogging.NPC.Edgar.Table,
+                     [3] = "1"
+                  }
+                  game:GetService("ReplicatedStorage").Packages.Knit.Services.MoggingService.RE.onEnterNPCTable:FireServer(unpack(args))
+               end
+            end
+         end)
+      else
+         isEdgarActive = false
+      end
+   end,
+})
 
 local DJBestToggle = MainTab:CreateToggle({
    Name = "Autofarm DJ Best",
