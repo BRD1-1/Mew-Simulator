@@ -1,0 +1,69 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Rayfield Example Window",
+   Icon = 0,
+   LoadingTitle = "Mewing Simulator",
+   LoadingSubtitle = "by B1RD",
+   Theme = "Default",
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil,
+      FileName = "B1RD"
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+   KeySystem = false,
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {"Hello"}
+   }
+})
+
+local MainTab = Window:CreateTab("Auto Farm", nil)
+local Section = MainTab:CreateSection("Auto Farm")
+
+local ToggleMew = MainTab:CreateToggle({
+   Name = "Use Mew",
+   CurrentValue = false,
+   Flag = "MewToggle", 
+   Callback = function(activateMew)
+      if activateMew then
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.MewRequest:FireServer()
+      end
+   end,
+})
+
+local ToggleRoller = MainTab:CreateToggle({
+   Name = "Equip and Use Roller",
+   CurrentValue = false,
+   Flag = "RollerToggle", 
+   Callback = function(activateRoller)
+      if activateRoller then
+         local args = {
+            [1] = 1,
+            [2] = "Roller",
+            [3] = "Pro Roller"
+         }
+         
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onGuiEquipRequest:FireServer(unpack(args))
+         game:GetService("ReplicatedStorage").Packages.Knit.Services.ToolService.RE.onClick:FireServer()
+      end
+   end,
+})
+
+
