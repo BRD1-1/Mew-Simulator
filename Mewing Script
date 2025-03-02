@@ -182,7 +182,7 @@ local EdgarToggle = MainTab:CreateToggle({
             end
          end)
 
-         task.delay(5, function()
+         task.delay(8, function()
             if isEdgarActive then
                isEdgarActive = false
                EdgarToggle:SetValue(false)
@@ -193,4 +193,5 @@ local EdgarToggle = MainTab:CreateToggle({
       end
    end,
 })
+
 
